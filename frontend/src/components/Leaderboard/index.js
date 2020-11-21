@@ -7,7 +7,7 @@ import sortBy from 'lodash/sortBy';
 
 import 'antd/dist/antd.css';
 import '../../index.css';
-import { Modal, Menu, Checkbox, Layout,  Carousel , Table, Card, Button, Input, Space, Image, Form, Avatar } from 'antd';
+import { Modal, Menu, Checkbox, Layout,  Carousel , Table, Radio , Card, Button, Input, Space, Image, Form, Avatar } from 'antd';
 import { HomeOutlined, PhoneOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 
 import { pendingDonation, changeFilters, getDonation, getOrganisation } from './actions';
@@ -80,26 +80,50 @@ const data = [
 class Leaderboard extends Component {
   state = {
     selectedMenuItem: '1',
+    valueT: 1,
+    valueF: 1,
     filters: []
   }
 
+
+  onChangeT = e => {
+    console.log('radio checked', e.target.value);
+    this.setState({
+      valueT: e.target.value,
+    });
+  };
+
+  onChangeF = e => {
+    console.log('radio checked', e.target.value);
+    this.setState({
+      valueF: e.target.value,
+    });
+  };
+
   render() {
-    const { selectedMenuItem } = this.state;
+    const { selectedMenuItem , valueT , valueF } = this.state;
     const { } = this.props
 
-    const plainOptions = [
-      { label: 'People Fed', value: 'Peoplefed' },
-      { label: 'Rating', value: 'rating' },
-    ];
-    const plainOptions1 = [
-      { label: 'Donor', value: 'donor' },
-      { label: 'Organsation', value: 'organisation' },
-    ];
-    const onChange = (checkedValues) => {
-      this.setState({
-        filters: [...checkedValues]
-      })
-    }
+    // const plainOptions = [
+    //   { label: 'People Fed', value: 'Peoplefed' },
+    //   { label: 'Rating', value: 'rating' },
+    // ];
+    // const plainOptions1 = [
+    //   { label: 'Donor', value: 'donor' },
+    //   { label: 'Organsation', value: 'organisation' },
+    // ];
+    // const onChange = (checkedValues) => {
+    //   this.setState({
+    //     filters: [...checkedValues]
+    //   })
+    // }
+
+    const radioStyle = {
+      display: 'block',
+      height: '30px',
+      lineHeight: '30px',
+      marginLeft: '30px',
+    };
 
     return (
         <Layout>
@@ -121,12 +145,26 @@ class Leaderboard extends Component {
             >
               <SubMenu key="1" title="Type" style={{ fontSize: '16px', height: "100% " }}>
                 <div style={{ "padding": "auto" }}>
-                  <Checkbox.Group options={plainOptions1} onChange={onChange} />
+                <Radio.Group onChange={this.onChangeT} value={valueT}>
+                  <Radio style={radioStyle} value={1}>
+                  Donor
+                  </Radio>
+                  <Radio style={radioStyle} value={2}>
+                  Organsation
+                  </Radio>
+                </Radio.Group>
                 </div>
               </SubMenu>
               <SubMenu key="2" title="Filter" style={{ fontSize: '16px', height: "100% " }}>
                 <div style={{ "padding": "auto" }}>
-                  <Checkbox.Group options={plainOptions} onChange={onChange} />
+                <Radio.Group onChange={this.onChangeF} value={valueF}>
+                  <Radio style={radioStyle} value={1}>
+                  People Fed
+                  </Radio>
+                  <Radio style={radioStyle} value={2}>
+                  Rating
+                  </Radio>
+                </Radio.Group>
                 </div>
               </SubMenu>
             </Menu>
