@@ -9,7 +9,7 @@ import '../../index.css';
 import MapDiscover from "../MapDiscover";
 
 import { Menu, Checkbox, Layout, Modal , Button , Card, Space, Image} from 'antd';
-import { InboxOutlined , CompassOutlined , EnvironmentOutlined } from '@ant-design/icons';
+import { EnvironmentOutlined } from '@ant-design/icons';
 import { changeFilters, getEvent } from './actions';
 import LoadingScreen from '../LoadingScreen';
 

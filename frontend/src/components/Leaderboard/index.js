@@ -8,7 +8,7 @@ import sortBy from 'lodash/sortBy';
 import 'antd/dist/antd.css';
 import '../../index.css';
 import { Modal, Menu, Checkbox, Layout,  Carousel , Table, Radio , Card, Button, Input, Space, Image, Form, Avatar } from 'antd';
-import { HomeOutlined, PhoneOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { } from '@ant-design/icons';
 
 import { pendingDonation, changeFilters, getDonation, getOrganisation } from './actions';
 import { setCurrentRoute } from '../Navbar/actions';
